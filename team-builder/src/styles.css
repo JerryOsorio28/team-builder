@@ -10,7 +10,7 @@ html body {
     /* width: 62.5%; */
 }
 
-.form {
+#form {
     display: flex;
     flex-direction: column;
     text-align: center;

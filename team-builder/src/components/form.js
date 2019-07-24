@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-function Form(){
+function Form(props){
 
     const [teamMember, setTeamMember] = useState();
 
@@ -27,11 +27,15 @@ function Form(){
 
     function addTeamMember (event){
         event.preventDefault(teamMember);
-        console.log('Member Added: ', teamMember)
+        const member = {...props.teamList, teamMember}
+        setTeamMember(teamMember)
+
+        console.log('Member Added: ', member)
+
     }
  
     return (
-        <form className='form' onSubmit = {event => addTeamMember(event)}>
+        <form id='form' onSubmit = {event => addTeamMember(event)}>
             <div className='input'>
                 <label>Name: </label>
                 <input 
