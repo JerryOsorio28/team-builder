@@ -1,15 +1,22 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './App.css';
 import Form from './components/form';
 
-function App() {
+import './styles.css'
 
-  const [teamMember, setTeamMember] = useState();
+function App() {
 
   return (
     <div className="App">
       <h1>Add Team Members</h1>
       <Form />
+      <div className='list'>
+        <h3>Members List:</h3>
+        <ul>
+    
+        </ul>  
+      </div>
+      
     </div>
   );
 }

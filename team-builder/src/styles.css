@@ -1,0 +1,32 @@
+html body {
+    display: flex;
+    justify-content: center;
+}
+
+
+.App {
+    display: flex;
+    flex-direction: column;
+    /* width: 62.5%; */
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.input {
+    padding: 10px;
+}
+
+button {
+    border-radius: .5rem;
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 1rem;
+}
+
+.list{
+    padding: 1rem;
+}
