@@ -1,61 +1,55 @@
-import React, {useState} from 'react';
+import React, {useState , useEffect} from 'react';
 
 function Form(props){
 
-    const [teamMember, setTeamMember] = useState([]);
+    const [teamMember, setTeamMember] = useState({
+        name: '',
+        email: '',
+        role: ''
+    });
 
-    function nameHandler(event){
-        const name = {...teamMember, [event.target.id]: event.target.value}
-        console.log('Name: ', event.target.value)
+    useEffect(() =>{
+        setTeamMember(props.newValue)},
+        [props.newValue])
+
+    function changeHandler(event){
+        const name = {...teamMember, [event.target.name]: event.target.value}
+        console.log('Input: ', event.target.value)
 
         setTeamMember(name);
     }
 
-    function emailHandler(event){
-        const email = {...teamMember, [event.target.id]: event.target.value}
-        console.log('E-mail: ', event.target.value)
-
-        setTeamMember(email);
-    }
-
-    function roleHandler(event){
-        const role = {...teamMember, [event.target.id]: event.target.value}
-        console.log('Role: ', event.target.value)
-
-        setTeamMember(role);
-    }
-
     function addTeamMember (event){
         event.preventDefault(teamMember);
-        setTeamMember(teamMember)
-        console.log('Member Added: ', teamMember)
-
+        if (props.editMember == true){
+            props.EditMember({...teamMember, [event.target.name]: event.target.value})
+            props.setEditMember(false)
+        }else{
+            props.setMemberList([...props.memberlist, teamMember])
+        }
     }
  
     return (
-        <form id='form' onSubmit = {event => addTeamMember(event)}>
+        <form id='form' onSubmit = {addTeamMember}>
             <div className='input'>
-                <label>Name: </label>
                 <input 
                     type='text'
-                    id='name'
-                    onChange={nameHandler}
+                    name='name'
+                    onChange={changeHandler}
                 />    
             </div>
             <div className='input'>
-                <label>Email: </label>
                 <input 
                     type='text'
-                    id='email'
-                    onChange={emailHandler}
+                    name='email'
+                    onChange={changeHandler}
                 />   
             </div>
             <div className='input'>
-                <label>Role: </label>
                 <input 
                     type='text'
-                    id='role'
-                    onChange={roleHandler}
+                    name='role'
+                    onChange={changeHandler}
                 />    
             </div>
             <button>Add Team Member</button>
