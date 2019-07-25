@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 
 function Form(props){
 
-    const [teamMember, setTeamMember] = useState();
+    const [teamMember, setTeamMember] = useState([]);
 
     function nameHandler(event){
         const name = {...teamMember, [event.target.id]: event.target.value}
@@ -27,10 +27,8 @@ function Form(props){
 
     function addTeamMember (event){
         event.preventDefault(teamMember);
-        const member = {...props.teamList, teamMember}
         setTeamMember(teamMember)
-
-        console.log('Member Added: ', member)
+        console.log('Member Added: ', teamMember)
 
     }
  
